@@ -1,5 +1,15 @@
 require "posocl/version"
 
 module Posocl
-  # Your code goes here...
+  require 'nokogiri'
+  require 'open-uri' # TODO: Replace?
+
+  require 'posocl/feed'
+  require 'posocl/feed_item'
+  require 'posocl/podcast'
+  require 'posocl/feed_parser'
+  require 'posocl/pages_generator'
+  require 'tilt'
+  require 'slim'
+  require 'pry'
 end

@@ -1,0 +1,24 @@
+head
+  meta charset="utf-8"
+  meta content="ie=edge" http-equiv="x-ua-compatible"
+  meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"
+
+  title = podcast.title
+  link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+body
+  header.text-center
+    img.rounded-circle.img-fluid.col-2.m-3 src="#{podcast.image_url}"
+    h1= podcast.title
+    p= podcast.description
+  hr
+  .container.mb-5.mt-5
+    .row
+      - items.each do |item|
+        .col-12.col-md-6.col-lg-4
+          .card
+            img.card-img-top src="#{item.image_url}"
+            .card-body.text-center
+              h5.card-title= item.title
+              hr
+                a.btn.btn-primary href="#{item.soundcloud_link}" Listen Now
+

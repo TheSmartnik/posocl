@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require 'posocl/cli'
+Posocl::CLI.start
+
