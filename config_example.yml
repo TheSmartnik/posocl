@@ -1,0 +1,3 @@
+config:
+  url: "http://feeds.soundcloud.com/users/soundcloud:users:478651992/sounds.rss"
+  template: "bootstrap"

@@ -3,14 +3,15 @@ require 'posocl'
 
 module Posocl
   class CLI < Thor
-    DEFAULT_TEMPLATE = 'bootstrap'
+    DEFAULT_CONFIG_PATH = "#{Dir.pwd}/config.yml"
 
     desc "build", "Builds website out of rss feed"
-    method_option :url, aliases: '-u', required: true
-    method_option :template, aliases: '-t', default: DEFAULT_TEMPLATE
+    method_option :config, aliases: '-c', default: DEFAULT_CONFIG_PATH
     def build
-      feed = FeedParser.new(url: options[:url]).call
-      PagesGenerator.new(feed: feed, template_name: options[:template]).call
+      config = Config.new(options[:config])
+      feed = FeedParser.new(url: config.url).call
+      PagesGenerator.new(feed: feed, template_name: config.template).call
+      puts "Website was successfully build"
     end
   end
 end

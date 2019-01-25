@@ -9,6 +9,7 @@ module Posocl
   require 'posocl/podcast'
   require 'posocl/feed_parser'
   require 'posocl/pages_generator'
+  require 'posocl/config'
   require 'tilt'
   require 'slim'
   require 'pry'
