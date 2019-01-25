@@ -11,10 +11,28 @@ module Posocl
 
     def call
       # Dir.glob
-      template = Tilt.new("#{__dir__}/templates/#{template_name}/index.html.slim")
-      page = template.render(feed)
+      generate_index
+      generate_show
+    end
+
+    private
+
+    def generate_index
+      page = get_template('index').render(feed)
       Dir.mkdir(BUILD_DIR) unless Dir.exists?(BUILD_DIR)
       File.open("#{BUILD_DIR}/index.html", 'w+') { |f| f.write page }
+    end
+
+    def generate_show
+      feed.items.each do |item|
+        page = get_template('show').render(item)
+        Dir.mkdir(BUILD_DIR) unless Dir.exists?(BUILD_DIR)
+        File.open("#{BUILD_DIR}/#{item.parametrized_title}.html", 'w+') { |f| f.write page }
+      end
+    end
+
+    def get_template(name)
+      Tilt.new("#{__dir__}/templates/#{template_name}/#{name}.html.slim")
     end
   end
 end
