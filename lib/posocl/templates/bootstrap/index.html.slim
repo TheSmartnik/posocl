@@ -5,6 +5,7 @@ head
 
   title = podcast.title
   link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+  link rel="stylesheet" type="text/css" href="style.css"
 body
   header.text-center
     img.rounded-circle.img-fluid.col-2.m-3 src="#{podcast.image_url}"
@@ -14,10 +15,12 @@ body
   .container.mb-5.mt-5
     .row
       - items.each do |item|
-        .col-12.col-md-6.col-lg-4
+        .col-12.col-md-6.col-lg-4.mt-3
           .card
+            .badge.badge-light.date-badge= item.published_at.strftime('%d %b')
             img.card-img-top src="#{item.image_url}"
             .card-body.text-center
+              .badge-light
               h5.card-title= item.title
               hr
                 a.btn.btn-primary href="#{item.parametrized_title}.html" Listen Now

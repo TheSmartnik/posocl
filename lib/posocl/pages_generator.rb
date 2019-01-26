@@ -13,6 +13,7 @@ module Posocl
       # Dir.glob
       generate_index
       generate_show
+      generate_styles
     end
 
     private
@@ -31,8 +32,14 @@ module Posocl
       end
     end
 
-    def get_template(name)
-      Tilt.new("#{__dir__}/templates/#{template_name}/#{name}.html.slim")
+    def generate_styles
+      File.open("#{BUILD_DIR}/style.css", 'w+') do |f|
+        f.write get_template('style', extension: 'scss').render
+      end
+    end
+
+    def get_template(name, extension: 'html.slim')
+      Tilt.new("#{__dir__}/templates/#{template_name}/#{name}.#{extension}")
     end
   end
 end
