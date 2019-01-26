@@ -3,13 +3,29 @@ head
   meta content="ie=edge" http-equiv="x-ua-compatible"
   meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"
 
-  title = title
+  title = item.title
   link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+  link rel="stylesheet" type="text/css" href="style.css"
+
 body
   header.text-center
     img.rounded-circle.img-fluid.col-2.m-3 src="#{image_url}"
-    h1= title
-    p== description
+    h1= item.title
     audio controls=""
-      source src=url
+      source src=item.url
       | Your browser does not support the audio element.
+    p== item.description
+
+  hr
+  .container
+    footer
+      .row.mt-5
+        .col-6
+        .col-6.row.justify-content-end
+          - if config.social_links
+            - width = (12.0 / config.social_links.size).ceil
+            - config.social_links.each do |name, url|
+              .text-center.mb-5 class="col-#{width}"
+                a href=url
+                  img.icon__social src="https://unpkg.com/simple-icons@latest/icons/#{name}.svg"
+

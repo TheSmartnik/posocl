@@ -10,7 +10,7 @@ module Posocl
     def build
       config = Config.new(options[:config])
       feed = FeedParser.new(url: config.url).call
-      PagesGenerator.new(feed: feed, template_name: config.template).call
+      PagesGenerator.new(feed: feed, config: config).call
       puts "Website was successfully build"
     end
   end

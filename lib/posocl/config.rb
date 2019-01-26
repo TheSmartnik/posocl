@@ -1,5 +1,4 @@
 require 'yaml'
-require 'ostruct'
 
 module Posocl
   class Config < SimpleDelegator
