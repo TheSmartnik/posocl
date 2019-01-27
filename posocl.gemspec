@@ -24,6 +24,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "thor"
   spec.add_dependency "nokogiri"
   spec.add_dependency "tilt"
+  spec.add_dependency "tilt-pipeline"
   spec.add_dependency "slim"
   spec.add_dependency "sass"
 

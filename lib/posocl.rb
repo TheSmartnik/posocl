@@ -13,6 +13,7 @@ module Posocl
   require 'posocl/generation_context'
   require 'posocl/config'
   require 'tilt'
+  require 'tilt/pipeline'
   require 'slim'
   require 'pry'
 end
